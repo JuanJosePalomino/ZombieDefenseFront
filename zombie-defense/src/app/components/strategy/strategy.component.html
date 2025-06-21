@@ -1,0 +1,73 @@
+<div class="container my-5">
+    <div>
+        <h2>Encuentra la Estrategia Más Óptima</h2>
+        <div class="d-flex flex-row gap-2">
+            <div>
+                <label>Balas:</label>
+                <input type="number" [(ngModel)]="bullets" class="form-control">
+            </div>
+            <div>
+                <label>Segundos:</label>
+                <input type="number" [(ngModel)]="seconds" class="form-control">
+            </div>
+        </div>
+        <button class="btn btn-primary my-3" (click)="getStrategy()">Calcular Estrategia</button>
+
+        <div *ngIf="strategy.length">
+            <h3>Resultado</h3>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Tipo </th>
+                        <th> Balas </th>
+                        <th> Tiempo </th>
+                        <th> Puntaje </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let zombie of strategy">
+                        <td>{{ zombie.tipoZombie.nombre }}</td>
+                        <td>{{ zombie.tipoZombie.balasRequeridas }}</td>
+                        <td>{{ zombie.tipoZombie.tiempoDisparoSegundos }}</td>
+                        <td>{{ zombie.puntajeObtenido }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <button class="btn btn-success" (click)="registrySimulacion()">Guardar simulación</button>
+            <div class="alert alert-success mt-2" *ngIf="message"> {{ message }}</div>
+        </div>
+
+        <div class="alert alert-danger mt-3" *ngIf="error">{{ error }}</div>
+    </div>
+    <div class="card mb-4 mt-3">
+        <div class="card-header">
+            <strong>Zombies Disponibles</strong>
+        </div>
+        <div class="card-body p-2">
+            <table class="table table-sm table-bordered mb-0">
+            <thead>
+                <tr>
+                <th>ID</th>
+                <th>Tipo</th>
+                <th>Balas</th>
+                <th>Tiempo</th>
+                <th>Puntaje</th>
+                <th>Amenaza</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let zombie of availableZombies">
+                <td>{{ zombie.zombieId }}</td>
+                <td>{{ zombie.tipoZombie.nombre }}</td>
+                <td>{{ zombie.tipoZombie.balasRequeridas }}</td>
+                <td>{{ zombie.tipoZombie.tiempoDisparoSegundos }}</td>
+                <td>{{ zombie.tipoZombie.puntajeOtorgado }}</td>
+                <td>{{ zombie.tipoZombie.nivelAmenaza }}</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

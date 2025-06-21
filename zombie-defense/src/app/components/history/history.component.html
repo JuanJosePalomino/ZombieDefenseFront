@@ -1,0 +1,28 @@
+<div class="container my-5">
+    <h2>Historial</h2>
+    <table class="table table-bordered" *ngIf="history.length; else empty">
+        <thead>
+            <tr>
+                <th> Fecha </th>
+                <th> Balas </th>
+                <th> Segundos </th>
+                <th> Puntaje Total </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let simulacion of history">
+                <td>{{ simulacion.fecha | date:'short' }}</td>
+                <td>{{ simulacion.bullets }}</td>
+                <td>{{ simulacion.secondsAvailable }}</td>
+                <td>{{ getTotalPoints(simulacion) }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<ng-template #empty>
+    <div class="alert alert-info">
+        No hay simulaciones guardadas
+    </div>
+</ng-template>
