@@ -25,7 +25,7 @@ export interface Zombie {
   providedIn: 'root'
 })
 export class StrategyService {
-  private apiUrl = 'http://localhost:5275/api/Defense';
+  private apiUrl = 'https://zombie-defense-api-gafkc6dnbubea5bz.eastus-01.azurewebsites.net/api/Defense';
   private apiKey = 'superclavesecreta-123';
 
   constructor(private http:HttpClient) { }
